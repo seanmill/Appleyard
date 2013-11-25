@@ -1,0 +1,51 @@
+﻿CREATE TABLE "Client"(
+"Name" varchar(140) ,
+"DateOfBirth" datetime ,
+"Gender" integer ,
+"LifeExpectancyTable" integer ,
+"PaysUkTax" integer ,
+"CGTRecycleRate" float ,
+"CapitalGrowth" float ,
+"IncomeYield" float ,
+"Inflation" float ,
+"HideFromOthersInCompany" integer ,
+"ID" integer primary key autoincrement not null );
+
+CREATE TABLE "Calculation"(
+"Name" varchar(140) ,
+"DurationOfCalculationLife" integer ,
+"DurationOfCalculationOther" float ,
+"IncludeStatePension" integer ,
+"Amount" float ,
+"IsReverseCalculation" integer ,
+"PreserveOriginalCapital" integer ,
+"ClientId" integer ,
+"UserId" integer ,
+"CompanyId" integer ,
+"ID" integer primary key autoincrement not null );
+
+CREATE TABLE "Capital"(
+"CalculationId" integer ,
+"Amount" integer ,
+"AtAge" integer ,
+"IncreaseWithInflationPriorToReceipt" integer ,
+"ID" integer primary key autoincrement not null );
+
+CREATE TABLE "Income"(
+"CalculationId" integer ,
+"Amount" integer ,
+"AgeStart" integer ,
+"AgeEnd" integer ,
+"NICPayable" integer ,
+"ID" integer primary key autoincrement not null );
+
+CREATE TABLE "Stepup"(
+"CalculationId" integer ,
+"IsIncrease" integer ,
+"IsAmount" integer ,
+"Amount" integer ,
+"IncWithInflation" integer ,
+"AgeStart" integer ,
+"AgeEnd" integer ,
+"IsForLife" integer ,
+"ID" integer primary key autoincrement not null );
